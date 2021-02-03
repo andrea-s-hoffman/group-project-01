@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  background-color: lightcoral;
+}
+
+.start-end-popup {
+}
+.main-content {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  background-color: aqua;
+  height: 50px;
+}
+.heading {
+  margin: 0;
+}
+
+.board {
+  flex: 1;
+}
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.card {
+  margin: 5px;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+.footer {
+  background-color: aqua;
+  height: 50px;
+}
+
+.timer {
+}
+.reset {
+}
+
+/* changes for desktop layout */
+@media only screen and (min-width: 768px) {
+}
