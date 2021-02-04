@@ -75,8 +75,11 @@ const randomizeCards = () => {
 // to check it works:
 const flipCard = (e) => {
   if (e.target.classList.contains("card")) {
-    e.target.classList.remove("card-back");
-    e.target.classList.add("card-front");
+    e.target.classList.add(`flip-card`);
+    setTimeout(() => {
+      e.target.classList.remove("card-back");
+      e.target.classList.add("card-front");
+    }, 350);
   }
 };
 cardContainer.addEventListener("click", flipCard);
