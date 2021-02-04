@@ -51,6 +51,11 @@ body {
 .card-back {
   background-color: green;
 }
-/* changes for desktop layout */
+
+.flip-card {
+  transition: transform 1s;
+  transform: rotateY(180deg);
+}
+
 @media only screen and (min-width: 768px) {
 }
