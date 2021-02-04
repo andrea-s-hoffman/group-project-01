@@ -45,25 +45,12 @@ body {
 .reset {
 }
 
-.pair1 {
-  background-color: green;
-}
-.pair2 {
-  background-color: yellow;
-}
-.pair3 {
-  background-color: red;
-}
-.pair4 {
-  background-color: orange;
-}
-.pair5 {
-  background-color: purple;
-}
-.pair6 {
+.card-front {
   background-color: blue;
 }
-
+.card-back {
+  background-color: green;
+}
 /* changes for desktop layout */
 @media only screen and (min-width: 768px) {
 }
