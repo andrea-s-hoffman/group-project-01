@@ -1,7 +1,8 @@
 "use strict";
 let cardContainer = document.querySelector(".card-container");
-let openCards = [];
+// let openCards = cards.map(() => {});
 
+let openCards = [];
 let cards = [
   {
     source: "",
@@ -66,10 +67,11 @@ const randomizeCards = () => {
     cards[currentIndex] = cards[randomIndex];
     cards[randomIndex] = temporaryValue;
   }
-  cards.forEach((card) => {
-    card = document.createElement("div");
+  console.log(cards);
+  cards.forEach((item) => {
+    let card = document.createElement("div");
     card.classList.add("card", "card-back");
-    card.setAttribute("pair", pair);
+    card.setAttribute("data-pair", item.pair);
     cardContainer.append(card);
   });
   return cards;
@@ -82,30 +84,25 @@ const flipCard = (e) => {
       e.target.classList.remove("card-back");
       e.target.classList.add("card-front");
       if (e.target.classList.contains("card-front") && openCards.length <= 1) {
-        openCards.push(e.target);
+        let pair = e.target.getAttribute(`data-pair`);
+        openCards.push(pair);
+      }
+      if (openCards.length === 2) {
+        cardContainer.removeEventListener("click", flipCard);
       }
     }, 350);
+    // setTimeout(() => {
+
+    //   if (openCards[0].pair === openCards[1].pair) {
+    //     openCards.classList.add(`hidden`);
+    //   } else {
+    //     openCards.classList.remove(`card-front`, `flip-card`);
+    //     openCards.classList.add(`card-back`);
+    //   }
+    // }, 1000);
   }
 };
 cardContainer.addEventListener("click", flipCard);
-
-// const cardMatch = () => {
-//   cardContainer.forEach((e) => {
-//     // if (e.target.pair === pair) {
-//     //   setTimeout(() => {
-//     //     e.target.classList.add("hidden");
-//     //   }, 1000);
-//     // }
-//   });
-// };
-
-// const cardMatch = () => {
-//   card.forEach((e) => {
-//     if (e.classList.contains("card-front") && openCards.length <= 2) {
-//       openCards.push(e);
-//     }
-//   });
-// };
 
 randomizeCards(cards);
 console.dir(cards);
