@@ -1,6 +1,8 @@
 "use strict";
 let cardContainer = document.querySelector(".card-container");
 let openCards = [];
+let startButton = document.querySelector(".start-button");
+let popUpWindow = document.querySelector(".start-end-popup");
 
 let cards = [
   {
@@ -74,9 +76,9 @@ const randomizeCards = () => {
     card.setAttribute("data-pair", item.pair);
     card.setAttribute("src", item.source);
     let source = card.getAttribute("src");
-    // item.style.backgroundImage = source;
-    card.style.backgroundImage = source;
-    image.src = card.source;
+
+    image.src = card.getAttribute("src");
+
     card.append(image);
     cardContainer.append(card);
   });
@@ -102,6 +104,10 @@ const flipCard = (e) => {
       if (firstCard === secondCard) {
         matched();
       } else {
+        setTimeout(() => {
+          e.target.classList.add("unmatched");
+          e.target.classList.remove("flip-card");
+        }, 1500);
         unmatched();
       }
     }
@@ -125,8 +131,8 @@ let unmatched = () => {
     openCards[0].classList.add(`card-back`);
     openCards[1].classList.remove(`card-front`);
     openCards[1].classList.add(`card-back`);
-    openCards[0].classList.remove(`flip-card`);
-    openCards[1].classList.remove(`flip-card`);
+    openCards[0].classList.add(`flip-card`);
+    openCards[1].classList.add(`flip-card`);
     cardContainer.addEventListener("click", flipCard);
     openCards = [];
     console.log(openCards);
@@ -136,3 +142,8 @@ let unmatched = () => {
 randomizeCards(cards);
 console.dir(cards);
 console.log(openCards);
+
+popUpWindow.addEventListener("submit", (event) => {
+  event.preventDefault();
+  popUpWindow.classList.add("disable-popup");
+});

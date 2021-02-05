@@ -2,8 +2,29 @@ body {
   margin: 0;
   background-color: lightcoral;
 }
-
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+}
 .start-end-popup {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+}
+.start-button {
+  width: 120px;
+  height: 80px;
+}
+.disable-popup {
+  visibility: hidden;
 }
 .main-content {
   display: flex;
@@ -33,7 +54,6 @@ body {
   height: 150px;
   width: 150px;
   border-radius: 50%;
-  border: 2px solid black;
 }
 .footer {
   background-color: aqua;
@@ -47,7 +67,6 @@ body {
 
 .card-front {
   background-color: blue;
-  object-fit: cover;
 }
 .card-back {
   background-color: green;
@@ -56,10 +75,31 @@ body {
 .flip-card {
   transition: transform 1s;
   transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+.unmatched {
+  animation-name: pulse;
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+  animation-duration: 0.75s;
 }
 
 .hidden {
   visibility: hidden;
+}
+.card-front > img {
+  width: auto;
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.card-back > img {
+  display: none;
+}
+img {
+  -webkit-transform: scaleX(-1);
 }
 
 @media only screen and (min-width: 768px) {
