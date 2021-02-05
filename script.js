@@ -1,7 +1,5 @@
 "use strict";
 let cardContainer = document.querySelector(".card-container");
-// let openCards = cards.map(() => {});
-
 let openCards = [];
 let cards = [
   {
@@ -80,29 +78,52 @@ const randomizeCards = () => {
 const flipCard = (e) => {
   if (e.target.classList.contains("card")) {
     e.target.classList.add(`flip-card`);
-    setTimeout(() => {
-      e.target.classList.remove("card-back");
-      e.target.classList.add("card-front");
-      if (e.target.classList.contains("card-front") && openCards.length <= 1) {
-        let pair = e.target.getAttribute(`data-pair`);
-        openCards.push(pair);
+    e.target.classList.remove("card-back");
+    e.target.classList.add("card-front");
+    if (e.target.classList.contains("card-front") && openCards.length <= 1) {
+      let pair = e.target.getAttribute(`data-pair`);
+      openCards.push(e.target);
+      console.log(openCards);
+    }
+    if (openCards.length === 2) {
+      cardContainer.removeEventListener("click", flipCard);
+    }
+    if (openCards.length === 2) {
+      let firstCard = openCards[0].getAttribute(`data-pair`);
+      let secondCard = openCards[1].getAttribute(`data-pair`);
+      if (firstCard === secondCard) {
+        matched();
+      } else {
+        unmatched();
       }
-      if (openCards.length === 2) {
-        cardContainer.removeEventListener("click", flipCard);
-      }
-    }, 350);
-    // setTimeout(() => {
-
-    //   if (openCards[0].pair === openCards[1].pair) {
-    //     openCards.classList.add(`hidden`);
-    //   } else {
-    //     openCards.classList.remove(`card-front`, `flip-card`);
-    //     openCards.classList.add(`card-back`);
-    //   }
-    // }, 1000);
+    }
   }
 };
+
 cardContainer.addEventListener("click", flipCard);
+
+let matched = () => {
+  setTimeout(() => {
+    openCards[0].classList.add(`hidden`);
+    openCards[1].classList.add(`hidden`);
+    cardContainer.addEventListener("click", flipCard);
+    openCards = [];
+  }, 1500);
+};
+
+let unmatched = () => {
+  setTimeout(() => {
+    openCards[0].classList.remove(`card-front`);
+    openCards[0].classList.add(`card-back`);
+    openCards[1].classList.remove(`card-front`);
+    openCards[1].classList.add(`card-back`);
+    openCards[0].classList.remove(`flip-card`);
+    openCards[1].classList.remove(`flip-card`);
+    cardContainer.addEventListener("click", flipCard);
+    openCards = [];
+    console.log(openCards);
+  }, 1500);
+};
 
 randomizeCards(cards);
 console.dir(cards);
