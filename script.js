@@ -1,53 +1,54 @@
 "use strict";
 let cardContainer = document.querySelector(".card-container");
 let openCards = [];
+
 let cards = [
   {
-    source: "",
+    source: "assets/theWhiteStripes-elephant.jpg",
     pair: "The White Stripes",
   },
   {
-    source: "",
+    source: "assets/theWhiteStripes.jpg",
     pair: "The White Stripes",
   },
   {
-    source: "",
+    source: "assets/theRaconteurs-brokenBoySoldiers.jpg",
     pair: "The Raconteurs",
   },
   {
-    source: "",
+    source: "assets/theRaconteurs.jpg",
     pair: "The Raconteurs",
   },
   {
-    source: "",
+    source: "assets/theDeadWeather-dodgeAndBurn.jpg",
     pair: "The Dead Weather",
   },
   {
-    source: "",
+    source: "assets/theDeadWeather.jpg",
     pair: "The Dead Weather",
   },
   {
-    source: "",
+    source: "assets/theUpholsterers.jpg",
     pair: "The Upholsterers",
   },
   {
-    source: "",
+    source: "assets/upholsterers.jpg",
     pair: "The Upholsterers",
   },
   {
-    source: "",
+    source: "assets/jackWhite-lazaretto.jpg",
     pair: "Jack White",
   },
   {
-    source: "",
+    source: "assets/jackWhite.jpg",
     pair: "Jack White",
   },
   {
-    source: "",
+    source: "assets/theGo-watchaDoin.jpg",
     pair: "The Go",
   },
   {
-    source: "",
+    source: "assets/theGo.jpg",
     pair: "The Go",
   },
 ];
@@ -68,8 +69,15 @@ const randomizeCards = () => {
   console.log(cards);
   cards.forEach((item) => {
     let card = document.createElement("div");
+    let image = document.createElement("img");
     card.classList.add("card", "card-back");
     card.setAttribute("data-pair", item.pair);
+    card.setAttribute("src", item.source);
+    let source = card.getAttribute("src");
+    // item.style.backgroundImage = source;
+    card.style.backgroundImage = source;
+    image.src = card.source;
+    card.append(image);
     cardContainer.append(card);
   });
   return cards;

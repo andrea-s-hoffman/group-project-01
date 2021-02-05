@@ -47,6 +47,7 @@ body {
 
 .card-front {
   background-color: blue;
+  object-fit: cover;
 }
 .card-back {
   background-color: green;
