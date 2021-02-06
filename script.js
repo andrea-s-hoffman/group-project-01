@@ -78,7 +78,7 @@ const randomizeCards = () => {
     cardFront.classList.add("flip-card-front");
     let frontImage = document.createElement("img");
     frontImage.classList.add(`front-image`);
-    cardFront.setAttribute("data-pair", item.pair);
+    cardInner.setAttribute("data-pair", item.pair);
     frontImage.src = "assets/tmr-logo.jpg";
     let cardBack = document.createElement("div");
     cardBack.classList.add("flip-card-back");
@@ -95,65 +95,57 @@ const randomizeCards = () => {
 
 randomizeCards();
 // to check it works:
-// const flipCard = (e) => {
-//   if (e.target.classList.contains("card")) {
-//     e.target.classList.add(`flip-card`);
-//     e.target.classList.remove("card-back");
-//     e.target.classList.add("card-front");
-//     if (e.target.classList.contains("card-front") && openCards.length <= 1) {
-//       let pair = e.target.getAttribute(`data-pair`);
-//       openCards.push(e.target);
-//       console.log(openCards);
-//     }
-//     if (openCards.length === 2) {
-//       cardContainer.removeEventListener("click", flipCard);
-//     }
-//     if (openCards.length === 2) {
-//       let firstCard = openCards[0].getAttribute(`data-pair`);
-//       let secondCard = openCards[1].getAttribute(`data-pair`);
-//       if (firstCard === secondCard) {
-//         matched();
-//       } else {
-//         setTimeout(() => {
-//           e.target.classList.add("unmatched");
-//           e.target.classList.remove("flip-card");
-//         }, 1500);
-//         unmatched();
-//       }
-//     }
-//   }
-// };
+const flipCard = (e) => {
+  if (e.target.classList.contains("flip-card-inner")) {
+    e.target.classList.add(`clicked`);
+    if (e.target.classList.contains("clicked") && openCards.length <= 1) {
+      openCards.push(e.target);
+      console.log(openCards);
+    }
+    if (openCards.length === 2) {
+      cardContainer.removeEventListener("click", flipCard);
+    }
+    if (openCards.length === 2) {
+      let firstCard = openCards[0].getAttribute(`data-pair`);
+      let secondCard = openCards[1].getAttribute(`data-pair`);
+      if (firstCard === secondCard) {
+        matched();
+      } else {
+        setTimeout(() => {
+          e.target.classList.add("unmatched");
+          e.target.classList.remove("flip-card");
+        }, 1500);
+        unmatched();
+      }
+    }
+  }
+};
 
-// cardContainer.addEventListener("click", flipCard);
+cardContainer.addEventListener("click", flipCard);
 
-// let matched = () => {
-//   setTimeout(() => {
-//     openCards[0].classList.add(`hidden`);
-//     openCards[1].classList.add(`hidden`);
-//     cardContainer.addEventListener("click", flipCard);
-//     openCards = [];
-//   }, 1500);
-// };
+let matched = () => {
+  setTimeout(() => {
+    openCards[0].classList.add(`hidden`);
+    openCards[1].classList.add(`hidden`);
+    cardContainer.addEventListener("click", flipCard);
+    openCards = [];
+  }, 1500);
+};
 
-// let unmatched = () => {
-//   setTimeout(() => {
-//     openCards[0].classList.remove(`card-front`);
-//     openCards[0].classList.add(`card-back`);
-//     openCards[1].classList.remove(`card-front`);
-//     openCards[1].classList.add(`card-back`);
-//     openCards[0].classList.add(`flip-card`);
-//     openCards[1].classList.add(`flip-card`);
-//     cardContainer.addEventListener("click", flipCard);
-//     openCards = [];
-//     console.log(openCards);
-//   }, 1500);
-// };
+let unmatched = () => {
+  setTimeout(() => {
+    openCards[0].classList.remove(`clicked`);
+    openCards[1].classList.remove(`clicked`);
+    cardContainer.addEventListener("click", flipCard);
+    openCards = [];
+    console.log(openCards);
+  }, 1500);
+};
 
-// randomizeCards(cards);
-// console.dir(cards);
-// console.log(openCards);
+console.dir(cards);
+console.log(openCards);
 
-// popUpWindow.addEventListener("submit", (event) => {
-//   event.preventDefault();
-//   popUpWindow.classList.add("disable-popup");
-// });
+popUpWindow.addEventListener("submit", (event) => {
+  event.preventDefault();
+  popUpWindow.classList.add("disable-popup");
+});
