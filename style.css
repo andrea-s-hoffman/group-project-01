@@ -113,10 +113,6 @@ body {
 .card-back > img {
   display: none;
 }
-/* img {
-  -webkit-transform: scaleX(-1);
-} */
-/* ----------------------- */
 
 .flip-card {
   /* background-color: transparent; */
@@ -149,7 +145,6 @@ body {
 }
 .flip-card:hover .flip-card-inner {
   box-shadow: 0 0px 40px 0 rgba(0, 0, 0, 0.25), 0 0px 80px 0 rgba(0, 0, 0, 0.12);
-  transform: rotateY(180deg);
 }
 
 /* Position the front and back side */
@@ -160,6 +155,7 @@ body {
   height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
+  pointer-events: none;
 }
 
 /* Style the back side */
@@ -174,6 +170,7 @@ body {
   height: 150px;
   width: 150px;
   border-radius: 50%;
+  pointer-events: none;
 }
 
 @media only screen and (min-width: 768px) {
