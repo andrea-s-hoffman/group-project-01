@@ -10,7 +10,7 @@ let cards = [
     pair: "The White Stripes",
   },
   {
-    source: "assets/theWhiteStripes.jpg",
+    source: "assets/vinyl-06.jpg",
     pair: "The White Stripes",
   },
   {
@@ -18,7 +18,7 @@ let cards = [
     pair: "The Raconteurs",
   },
   {
-    source: "assets/theRaconteurs.jpg",
+    source: "assets/vinyl-02.jpg",
     pair: "The Raconteurs",
   },
   {
@@ -26,11 +26,11 @@ let cards = [
     pair: "The Dead Weather",
   },
   {
-    source: "assets/theDeadWeather.jpg",
+    source: "assets/vinyl-03.jpg",
     pair: "The Dead Weather",
   },
   {
-    source: "assets/theUpholsterers.jpg",
+    source: "assets/vinyl-04.jpg",
     pair: "The Upholsterers",
   },
   {
@@ -42,7 +42,7 @@ let cards = [
     pair: "Jack White",
   },
   {
-    source: "assets/jackWhite.jpg",
+    source: "assets/vinyl-01.jpg",
     pair: "Jack White",
   },
   {
@@ -50,7 +50,7 @@ let cards = [
     pair: "The Go",
   },
   {
-    source: "assets/theGo.jpg",
+    source: "assets/vinyl-05.jpg",
     pair: "The Go",
   },
 ];
