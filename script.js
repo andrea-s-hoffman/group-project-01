@@ -5,6 +5,7 @@ let hiddenCards = [];
 let startButton = document.querySelector(".start-button");
 let popUpWindowEnd = document.querySelector(".end-popup");
 let popUpWindowStart = document.querySelector(".start-popup");
+let resetButton = document.querySelector(`.reset-button`);
 let cards = [
   {
     source: "assets/theWhiteStripes-elephant.jpg",
@@ -55,6 +56,12 @@ let cards = [
     pair: "The Go",
   },
 ];
+
+popUpWindowStart.addEventListener("submit", (event) => {
+  event.preventDefault();
+  popUpWindowStart.classList.add("disable-popup");
+});
+
 const randomizeCards = () => {
   let currentIndex = cards.length,
     temporaryValue,
@@ -69,7 +76,7 @@ const randomizeCards = () => {
     cards[currentIndex] = cards[randomIndex];
     cards[randomIndex] = temporaryValue;
   }
-  console.log(cards);
+
   cards.forEach((item) => {
     let cardParent = document.createElement("div");
     cardParent.classList.add(`flip-card`);
@@ -99,7 +106,11 @@ randomizeCards();
 const flipCard = (e) => {
   if (e.target.classList.contains("flip-card-inner")) {
     e.target.classList.add(`clicked`);
-    if (e.target.classList.contains("clicked") && openCards.length <= 1) {
+    if (
+      e.target.classList.contains("clicked") &&
+      openCards.length <= 1 &&
+      e.target !== openCards[0]
+    ) {
       openCards.push(e.target);
       console.log(openCards);
     }
@@ -110,6 +121,7 @@ const flipCard = (e) => {
       let firstCard = openCards[0].getAttribute(`data-pair`);
       let secondCard = openCards[1].getAttribute(`data-pair`);
       if (firstCard === secondCard) {
+        hiddenCards.push(e.target);
         hiddenCards.push(e.target);
         matched();
       } else {
@@ -147,14 +159,11 @@ let unmatched = () => {
     openCards[1].classList.remove(`clicked`);
     cardContainer.addEventListener("click", flipCard);
     openCards = [];
-    console.log(openCards);
   }, 1500);
 };
 
-console.dir(cards);
-console.log(openCards);
+let restartGame = () => {
+  location.reload();
+};
 
-popUpWindowStart.addEventListener("submit", (event) => {
-  event.preventDefault();
-  popUpWindowStart.classList.add("disable-popup");
-});
+resetButton.addEventListener("click", restartGame);
