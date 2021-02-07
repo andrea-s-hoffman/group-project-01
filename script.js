@@ -1,9 +1,10 @@
 "use strict";
 let cardContainer = document.querySelector(".card-container");
 let openCards = [];
+let hiddenCards = [];
 let startButton = document.querySelector(".start-button");
-let popUpWindow = document.querySelector(".start-end-popup");
-
+let popUpWindowEnd = document.querySelector(".end-popup");
+let popUpWindowStart = document.querySelector(".start-popup");
 let cards = [
   {
     source: "assets/theWhiteStripes-elephant.jpg",
@@ -109,6 +110,8 @@ const flipCard = (e) => {
       let firstCard = openCards[0].getAttribute(`data-pair`);
       let secondCard = openCards[1].getAttribute(`data-pair`);
       if (firstCard === secondCard) {
+        hiddenCards.push(e.target);
+        hiddenCards.push(e.target);
         matched();
       } else {
         setTimeout(() => {
@@ -117,6 +120,13 @@ const flipCard = (e) => {
         }, 1500);
         unmatched();
       }
+    }
+    if (hiddenCards.length === 12) {
+      setTimeout(() => {
+        cardContainer.removeEventListener("click", flipCard);
+        console.log(`game over`);
+        popUpWindowEnd.classList.add("trigger-popup");
+      }, 1500);
     }
   }
 };
@@ -145,7 +155,7 @@ let unmatched = () => {
 console.dir(cards);
 console.log(openCards);
 
-popUpWindow.addEventListener("submit", (event) => {
+popUpWindowStart.addEventListener("submit", (event) => {
   event.preventDefault();
-  popUpWindow.classList.add("disable-popup");
+  popUpWindowStart.classList.add("disable-popup");
 });

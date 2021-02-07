@@ -9,7 +9,8 @@ body {
   align-items: center;
   top: 0;
 }
-.start-end-popup {
+.start-popup,
+.end-popup {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -20,12 +21,19 @@ body {
   align-items: center;
   top: 0;
 }
+
+.end-popup {
+  visibility: hidden;
+}
 .start-button {
   width: 120px;
   height: 80px;
 }
 .disable-popup {
   visibility: hidden;
+}
+.trigger-popup {
+  visibility: visible;
 }
 .main-content {
   display: flex;
@@ -171,6 +179,10 @@ body {
   width: 150px;
   border-radius: 50%;
   pointer-events: none;
+}
+
+.placeholder-change-later {
+  color: white;
 }
 
 @media only screen and (min-width: 768px) {
