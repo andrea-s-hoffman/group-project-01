@@ -1,9 +1,15 @@
 body {
   margin: 0;
-  background-color: black;
+  color: aliceblue;
+  text-shadow: 2px 5px #000000;
+  font-family: "Special Elite", cursive;
   background-image: url(assets/bg-1.jpg);
+  font-weight: bold;
+  font-size: larger;
 }
 .form-container {
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,14 +26,47 @@ body {
   justify-content: center;
   align-items: center;
   top: 0;
+  bottom: 0;
 }
 
+.start-popup-text, .end-popup-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 25px;
+  width: 290px;
+  height: 200px;
+  padding: 20px;
+  border-radius: 20px;
+  background-image: url(assets/header-footer-popup-bg.jpg);
+  box-shadow: 0px 0px 20px 6px rgba(255, 255, 255, 0.3);
+}
 .end-popup {
   visibility: hidden;
 }
-.start-button {
+
+.start-button{
   width: 120px;
-  height: 80px;
+  height: 40px;
+}
+
+.play-again-button{
+  width: 160px;
+  height: 40px;
+}
+
+.start-button, .play-again-button {
+  background-image: url(assets/bg-1.jpg);
+  margin-top: 15px;
+  padding-top: 10px;
+  border-radius: 20px;
+  border-color: 10px solid black;
+  color: aliceblue;
+  font-family: "Special Elite", cursive;
+  font-size: larger;
+  font-weight: bolder;
 }
 .disable-popup {
   visibility: hidden;
@@ -45,15 +84,18 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #c01414;
+  object-fit: cover;
+  background-image: url(assets/header-footer-popup-bg.jpg);
   height: 50px;
 }
 
 .heading {
-  margin: 0;
+  text-align: center;
+  font-size: larger;
 }
 
 .board {
+  display: flex;
   flex: 1;
 }
 
@@ -64,42 +106,43 @@ body {
   flex-wrap: wrap;
 }
 
-.cardParent {
-  background-color: yellow;
-}
-
-.card {
-  margin: 5px;
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
-}
-
 .footer {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  background-color: #c01414;
+  background-image: url(assets/header-footer-popup-bg.jpg);
+  object-fit: cover;
   height: 100px;
+  font-size: larger;
+  font-weight: bolder;
 }
 
-.timer {
+.timer-container {
+  margin: 10px;
+  font-size: larger;
 }
-.reset {
+.reset-button {
+  background-image: url(assets/bg-1.jpg);
+  padding-top: 10px;
+  width: 120px;
+  height: 40px;
+  border-radius: 20px;
+  border-color: 10px solid black;
+  color: aliceblue;
+  font-family: "Special Elite", cursive;
+  font-weight: bold;
+  font-size: larger;
 }
 
-/* .card-front {
-  background-color: blue;
+.reset-button:hover {
+  box-shadow: 0px 0px 10px 4px rgba(226, 217, 217, 0.25);
 }
-.card-back {
-  background-color: green;
-} */
 
-/* .flip-card {
-  transition: transform 1s;
-  transform: rotateY(180deg);
-  -webkit-transform: rotateY(180deg);
-} */
+.playlist{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
 .unmatched {
   animation-name: pulse;
   -webkit-backface-visibility: visible !important;
@@ -110,28 +153,18 @@ body {
 .hidden {
   visibility: hidden;
 }
-/* .flip-card-back .flip-card-front > img {
-  width: auto;
-  height: auto;
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-} */
+
 .card-back > img {
   display: none;
 }
 
 .flip-card {
-  /* background-color: transparent; */
-  width: auto;
-  height: auto;
   max-height: 100%;
   max-width: 100%;
   object-fit: cover;
   margin: 5px;
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
@@ -150,9 +183,6 @@ body {
 /* Do an horizontal flip when you move the mouse over the flip box container */
 .clicked {
   transform: rotateY(180deg);
-}
-.flip-card:hover .flip-card-inner {
-  box-shadow: 0 0px 40px 0 rgba(0, 0, 0, 0.25), 0 0px 80px 0 rgba(0, 0, 0, 0.12);
 }
 
 /* Position the front and back side */
@@ -174,9 +204,8 @@ body {
 .front-image,
 .back-image {
   object-fit: cover;
-  margin: 5px;
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
   pointer-events: none;
 }
@@ -185,5 +214,59 @@ body {
   color: white;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 550px) {
+  .start-button:hover {
+    box-shadow: 0px 0px 20px 4px rgba(255, 255, 255, 0.3);
+  }
+
+  .header {
+    font-size: larger;
+  }
+
+  .flip-card:hover .flip-card-inner {
+    box-shadow: 0px 0px 20px 4px rgba(226, 217, 217, 0.25);
+  }
+
+  .flip-card {
+    height: 125px;
+    width: 125px;
+  }
+  .front-image,
+  .back-image {
+    height: 125px;
+    width: 125px;
+  }
+
+  .playlist{
+    margin-top: 7px;
+    height: 80px;
+    width: 300px;
+    border-radius: 20px;
+  }
 }
+
+
+@media only screen and (min-width: 940px) {
+  .flip-card {
+    height: 180px;
+    width: 180px;
+  }
+  .front-image,
+  .back-image {
+    height: 180px;
+    width: 180px;
+  }
+} 
+
+
+@media only screen and (min-width: 1380px) {
+  .flip-card {
+    height: 220px;
+    width: 220px;
+  }
+  .front-image,
+  .back-image {
+    height: 220px;
+    width: 220px;
+  }
+} */
