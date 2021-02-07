@@ -29,7 +29,8 @@ body {
   bottom: 0;
 }
 
-.start-popup-text, .end-popup-text{
+.start-popup-text,
+.end-popup-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,17 +48,18 @@ body {
   visibility: hidden;
 }
 
-.start-button{
+.start-button {
   width: 120px;
   height: 40px;
 }
 
-.play-again-button{
+.play-again-button {
   width: 160px;
   height: 40px;
 }
 
-.start-button, .play-again-button {
+.start-button,
+.play-again-button {
   background-image: url(assets/bg-1.jpg);
   margin-top: 15px;
   padding-top: 10px;
@@ -67,6 +69,7 @@ body {
   font-family: "Special Elite", cursive;
   font-size: larger;
   font-weight: bolder;
+  outline: none;
 }
 .disable-popup {
   visibility: hidden;
@@ -87,6 +90,7 @@ body {
   object-fit: cover;
   background-image: url(assets/header-footer-popup-bg.jpg);
   height: 50px;
+  box-shadow: 0px 0px 20px 2px rgba(255, 255, 255, 0.3);
 }
 
 .heading {
@@ -115,6 +119,7 @@ body {
   height: 100px;
   font-size: larger;
   font-weight: bolder;
+  box-shadow: 0px 0px 20px 2px rgba(255, 255, 255, 0.3);
 }
 
 .timer-container {
@@ -132,13 +137,14 @@ body {
   font-family: "Special Elite", cursive;
   font-weight: bold;
   font-size: larger;
+  outline: none;
 }
 
 .reset-button:hover {
   box-shadow: 0px 0px 10px 4px rgba(226, 217, 217, 0.25);
 }
 
-.playlist{
+.playlist {
   height: 80px;
   width: 80px;
   border-radius: 50%;
@@ -237,14 +243,13 @@ body {
     width: 125px;
   }
 
-  .playlist{
+  .playlist {
     margin-top: 7px;
     height: 80px;
     width: 300px;
     border-radius: 20px;
   }
 }
-
 
 @media only screen and (min-width: 940px) {
   .flip-card {
@@ -256,8 +261,7 @@ body {
     height: 180px;
     width: 180px;
   }
-} 
-
+}
 
 @media only screen and (min-width: 1380px) {
   .flip-card {
@@ -269,4 +273,8 @@ body {
     height: 220px;
     width: 220px;
   }
-} */
+  .header {
+    height: 100px;
+    font-size: 3rem;
+  }
+}
