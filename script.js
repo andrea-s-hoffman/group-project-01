@@ -111,7 +111,6 @@ const flipCard = (e) => {
       let secondCard = openCards[1].getAttribute(`data-pair`);
       if (firstCard === secondCard) {
         hiddenCards.push(e.target);
-        hiddenCards.push(e.target);
         matched();
       } else {
         setTimeout(() => {

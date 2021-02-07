@@ -5,26 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory Game</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
   </head>
   <body>
     <section class="form-container">
       <form class="start-popup">
-        <button type="submit" class="start-button">Start</button>
+        <div class="start-popup-text">
+          Let's see how fast you can match these Jack White acts! 
+          Press start to begin your conquest!
+           <br>
+           <br>
+          Good luck!  
+           <button type="submit" class="start-button">START</button>
+      </div>
+      </div>
       </form>
       <form class="end-popup">
-        <p class="placeholder-change-later">GAME OVER (placeholder)</p>
+        <p class="end-popup-text"> It took you `${timer}` to finally make a conquest out of The Jack White Memory Game!
+          <button type="submit" class="play-again-button">PLAY AGAIN!</button>
+        </p>
       </form>
     </section>
     <div class="main-content">
       <header class="header">
-        <h1 class="heading">Heading</h1>
+        <h1 class="heading">The Jack White Memory Game</h1>
       </header>
       <main class="board">
         <section class="card-container"></section>
       </main>
       <footer class="footer">
-        <div class="timer">Timer</div>
-        <button class="reset">Reset</button>
+        <div class="timer-container">TIMER : <div class="timer">xx : xx </div></div>
+        <div><iframe class="playlist" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX2WREH6Ohrd9" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
+        <button class="reset-button">RESET</button>
       </footer>
     </div>
     <script src="script.js"></script>
