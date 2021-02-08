@@ -6,6 +6,9 @@ let startButton = document.querySelector(".start-button");
 let popUpWindowEnd = document.querySelector(".end-popup");
 let popUpWindowStart = document.querySelector(".start-popup");
 let resetButton = document.querySelector(`.reset-button`);
+let timer = document.querySelector(".timer");
+let timerContainer = document.querySelector(".timer-container");
+let endText = document.querySelector(".final-score");
 let cards = [
   {
     source: "assets/theWhiteStripes-elephant.jpg",
@@ -57,10 +60,10 @@ let cards = [
   },
 ];
 
-popUpWindowStart.addEventListener("submit", (event) => {
-  event.preventDefault();
-  popUpWindowStart.classList.add("disable-popup");
-});
+// popUpWindowStart.addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   popUpWindowStart.classList.add("disable-popup");
+// });
 
 const randomizeCards = () => {
   let currentIndex = cards.length,
@@ -137,6 +140,9 @@ const flipCard = (e) => {
         cardContainer.removeEventListener("click", flipCard);
         console.log(`game over`);
         popUpWindowEnd.classList.add("trigger-popup");
+        startButton.classList.remove("start-timer");
+        let finalTime = timer.innerHTML;
+        endText.innerHTML = `It took you ${finalTime} to finally make a conquest out of The Jack White Memory Game!`;
       }, 1500);
     }
   }
@@ -167,3 +173,30 @@ let restartGame = () => {
 };
 
 resetButton.addEventListener("click", restartGame);
+
+startButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  startButton.classList.add("start-timer");
+  popUpWindowStart.classList.add("disable-popup");
+});
+
+let sec = 0;
+let min = 0;
+
+const gameTimer = () => {
+  setInterval(() => {
+    if (startButton.classList.contains(`start-timer`)) {
+      sec++;
+      sec = sec < 10 ? `0${sec}` : sec;
+      timer.innerHTML = `${min}:${sec}`;
+      if (sec === 60) {
+        sec = 0;
+        min++;
+      }
+    }
+  }, 1000);
+  min = min < 10 ? `0${min}` : min;
+};
+
+gameTimer();
+console.log(timer);
