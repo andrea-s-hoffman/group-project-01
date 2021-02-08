@@ -12,6 +12,7 @@ let timerContainer = document.querySelector(".timer-container");
 let endText = document.querySelector(".final-score");
 let sec = 0;
 let min = 0;
+let hr = 0;
 
 // array
 let cards = [
@@ -149,8 +150,8 @@ const flipCard = (e) => {
         // line below to stop timer
         startButton.classList.remove("start-timer");
         // two lines below take final time and display at end popup
-        let finalTime = timer.innerHTML;
-        endText.innerHTML = `It took you ${finalTime} to finally make a conquest out of The Jack White Memory Game!`;
+        let finalTime = timer.textContent;
+        endText.textContent = `It took you ${finalTime} to finally make a conquest out of The Jack White Memory Game!`;
       }, 1500);
     }
   }
@@ -178,26 +179,34 @@ let unmatched = () => {
   }, 1500);
 };
 
-// reset button
-let restartGame = () => {
-  location.reload();
-};
-// event listener for reset button
-resetButton.addEventListener("click", restartGame);
-
 // timer counting up
 const gameTimer = () => {
   setInterval(() => {
     if (startButton.classList.contains(`start-timer`)) {
       sec++;
       sec = sec < 10 ? `0${sec}` : sec;
-      timer.innerHTML = `${min}:${sec}`;
+      timer.textContent = `0${min}:${sec}`;
       if (sec === 60) {
         sec = 0;
         min++;
       }
+      if (min > 9) {
+        timer.textContent = `${min}:${sec}`;
+      }
+      if (min === 60) {
+        timer.innerHTML = `GIVE UP, <br> GET A LIFE!`;
+        timer.style.fontSize = `14px`;
+      }
     }
   }, 1000);
-  min = min < 10 ? `0${min}` : min;
 };
 gameTimer();
+
+// reset game and timer and reshuffle cards
+let restartGame = () => {
+  cardContainer.innerHTML = ``;
+  randomizeCards();
+  sec = 55;
+  min = 59;
+};
+resetButton.addEventListener("click", restartGame);
