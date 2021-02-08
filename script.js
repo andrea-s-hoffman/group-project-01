@@ -206,7 +206,7 @@ gameTimer();
 let restartGame = () => {
   cardContainer.innerHTML = ``;
   randomizeCards();
-  sec = 55;
-  min = 59;
+  sec = 00;
+  min = 00;
 };
 resetButton.addEventListener("click", restartGame);
