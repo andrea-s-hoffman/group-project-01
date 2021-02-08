@@ -1,4 +1,5 @@
 "use strict";
+// variables
 let cardContainer = document.querySelector(".card-container");
 let openCards = [];
 let hiddenCards = [];
@@ -9,6 +10,10 @@ let resetButton = document.querySelector(`.reset-button`);
 let timer = document.querySelector(".timer");
 let timerContainer = document.querySelector(".timer-container");
 let endText = document.querySelector(".final-score");
+let sec = 0;
+let min = 0;
+
+// array
 let cards = [
   {
     source: "assets/theWhiteStripes-elephant.jpg",
@@ -60,11 +65,14 @@ let cards = [
   },
 ];
 
-// popUpWindowStart.addEventListener("submit", (event) => {
-//   event.preventDefault();
-//   popUpWindowStart.classList.add("disable-popup");
-// });
+// start button event listener for disabling start popup and for starting timer
+startButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  startButton.classList.add("start-timer");
+  popUpWindowStart.classList.add("disable-popup");
+});
 
+// shuffling & building deck
 const randomizeCards = () => {
   let currentIndex = cards.length,
     temporaryValue,
@@ -103,9 +111,9 @@ const randomizeCards = () => {
     cardContainer.append(cardParent);
   });
 };
-
 randomizeCards();
-// to check it works:
+
+// matching & unmatching game functionality
 const flipCard = (e) => {
   if (e.target.classList.contains("flip-card-inner")) {
     e.target.classList.add(`clicked`);
@@ -115,7 +123,6 @@ const flipCard = (e) => {
       e.target !== openCards[0]
     ) {
       openCards.push(e.target);
-      console.log(openCards);
     }
     if (openCards.length === 2) {
       cardContainer.removeEventListener("click", flipCard);
@@ -138,18 +145,20 @@ const flipCard = (e) => {
     if (hiddenCards.length === 12) {
       setTimeout(() => {
         cardContainer.removeEventListener("click", flipCard);
-        console.log(`game over`);
         popUpWindowEnd.classList.add("trigger-popup");
+        // line below to stop timer
         startButton.classList.remove("start-timer");
+        // two lines below take final time and display at end popup
         let finalTime = timer.innerHTML;
         endText.innerHTML = `It took you ${finalTime} to finally make a conquest out of The Jack White Memory Game!`;
       }, 1500);
     }
   }
 };
-
+// when card is clicked, apply function above
 cardContainer.addEventListener("click", flipCard);
 
+// matched function that is pulled into flipCard function
 let matched = () => {
   setTimeout(() => {
     openCards[0].classList.add(`hidden`);
@@ -159,6 +168,7 @@ let matched = () => {
   }, 1500);
 };
 
+// unmatched function that is pulled into flipCard function
 let unmatched = () => {
   setTimeout(() => {
     openCards[0].classList.remove(`clicked`);
@@ -168,21 +178,14 @@ let unmatched = () => {
   }, 1500);
 };
 
+// reset button
 let restartGame = () => {
   location.reload();
 };
-
+// event listener for reset button
 resetButton.addEventListener("click", restartGame);
 
-startButton.addEventListener("click", (event) => {
-  event.preventDefault();
-  startButton.classList.add("start-timer");
-  popUpWindowStart.classList.add("disable-popup");
-});
-
-let sec = 0;
-let min = 0;
-
+// timer counting up
 const gameTimer = () => {
   setInterval(() => {
     if (startButton.classList.contains(`start-timer`)) {
@@ -197,6 +200,4 @@ const gameTimer = () => {
   }, 1000);
   min = min < 10 ? `0${min}` : min;
 };
-
 gameTimer();
-console.log(timer);

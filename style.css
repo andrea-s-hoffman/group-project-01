@@ -7,6 +7,13 @@ body {
   font-weight: bold;
   font-size: larger;
 }
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 .form-container {
   height: 100%;
   width: 100%;
@@ -77,11 +84,6 @@ body {
 .trigger-popup {
   visibility: visible;
 }
-.main-content {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
 
 .header {
   display: flex;
@@ -145,11 +147,14 @@ body {
   box-shadow: 0px 0px 10px 4px rgba(226, 217, 217, 0.25);
 }
 
+/* spotify */
 .playlist {
   height: 80px;
   width: 80px;
   border-radius: 50%;
 }
+
+/* js functionality and animation classes */
 .unmatched {
   animation-name: pulse;
   -webkit-backface-visibility: visible !important;
@@ -165,6 +170,7 @@ body {
   display: none;
 }
 
+/* parent div for individual cards */
 .flip-card {
   max-height: 100%;
   max-width: 100%;
@@ -173,10 +179,10 @@ body {
   height: 100px;
   width: 100px;
   border-radius: 50%;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  perspective: 1000px;
 }
 
-/* This container is needed to position the front and back side */
+/* this div is holding front and back of card */
 .flip-card-inner {
   position: relative;
   width: 100%;
@@ -187,27 +193,28 @@ body {
   border-radius: 50%;
 }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
+/* flip animation */
 .clicked {
   transform: rotateY(180deg);
 }
 
-/* Position the front and back side */
+/* Position and centering the front and back side */
 .flip-card-front,
 .flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
+  -webkit-backface-visibility: hidden; /* for Safari */
   backface-visibility: hidden;
   pointer-events: none;
 }
 
-/* Style the back side */
+/* re-reversing back side to not mirror itself */
 .flip-card-back {
   transform: rotateY(180deg);
 }
 
+/* sizing images inside div */
 .front-image,
 .back-image {
   object-fit: cover;
@@ -217,10 +224,7 @@ body {
   pointer-events: none;
 }
 
-.placeholder-change-later {
-  color: white;
-}
-
+/* transitional sizes */
 @media only screen and (min-width: 550px) {
   .start-button:hover {
     box-shadow: 0px 0px 20px 4px rgba(255, 255, 255, 0.3);
@@ -264,6 +268,7 @@ body {
   }
 }
 
+/* desktop breakpoint */
 @media only screen and (min-width: 1380px) {
   .flip-card {
     height: 220px;
